@@ -1,11 +1,11 @@
 ## Project Title
 
-Just drawing dots in svg
-
+Dots.
 
 ## Description
 
-The main goal is to develoop a template for experiments using scalable vector graphics and include a workable menu structure.
+This project consists of an html file, css and javascript simply to display a menu and draw dots on the screen using variables supplied by the user.
+By it self this is rather stupid use of SVG but the purpose is to develop a generic framework for the user interaction and the screen filling SVG image.
 The menu should work across platforms.
 
 ## Authors

@@ -1,11 +1,14 @@
+// Set a stile attribute to vissible
 function show(id) {
   document.getElementById(id).style.visibility = "visible";
 }
 
+// Set a stile attribute to collapsed 
 function hide(id) {
   document.getElementById(id).style.visibility = "collapse";
 }
 
+// Read command line parameters
 function init(){
   if (getQueryVariable("distance")){
     document.forms["choice"]["distance"].value = getQueryVariable("distance");
@@ -21,6 +24,7 @@ function init(){
   } 
 }
 
+// Drap a circle in SVG
 function drawDot(object,x,y,r,fill,opacity){
   newDot = document.createElementNS("http://www.w3.org/2000/svg", 'circle'); 
   newDot.setAttribute("cx",x); 
@@ -31,10 +35,12 @@ function drawDot(object,x,y,r,fill,opacity){
   object.appendChild(newDot);
 }
 
+// Dummy function for the form submit
 function noAction(inp){
   return false;
 }
 
+// Process the data entered in the form and draw the SVG image
 function submitChoice(inp){
   var svgObject=document.getElementById("svgpict");
   var d=parseInt(document.forms["choice"]["distance"].value);
@@ -53,6 +59,7 @@ function submitChoice(inp){
   return false;
 }
 
+// Read the command line to check for a specific variable
 function getQueryVariable(variable)
 {
   var query = window.location.search.substring(1);
@@ -64,12 +71,14 @@ function getQueryVariable(variable)
   return(false);
 }
 
+// Change style attributes to show the menu
 function showMenu()
 { 
   hide("button");
   show("menu");
 }
 
+// Change style attributes to hide the menu and show a button
 function hideMenu()
 { 
   hide("menu");

@@ -8,6 +8,10 @@
 <!-- notice and this notice are preserved.                                -->
 <!--                                                                      -->
 <!-- Start of generic webpage for svg                                     -->
+<!-- Main aim is to get something of a 'framework' to create screen       -->
+<!-- filling SV image with a menu that can be collapsed'                  -->
+<!-- For a start I draw dots on the screen, this is rather stupid but it  -->
+<!-- is a starting point for further experiments.                         -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -17,6 +21,11 @@
     <script src="dots.js"></script>
   </head>
   <body onLoad="init()">
+      <!-- The forms 'submit' is a dummy function, it is important that   -->
+      <!-- the dummy function returns ' false' in orde not to reload the  -->
+      <!-- page.                                                          -->
+      <!-- The menu will be set to 'collapsed' or ' visible' using css    -->
+      <!-- and/or javascript.                                             -->
       <div id="menu">
         <form name="choice" class="menuForm" onsubmit="return noAction();">
           <div><h4>Graph Data</h4></div><div>
@@ -48,12 +57,16 @@
           <div></div><div class="input"><button onclick="submitChoice()" >Submit</button></div>
         </form>
       </div>
+      <!-- The button that will replace the form, set to ' collapsed'     -->
+      <!-- or visible using css and/or javascript.                        -->
       <div id="button" class="menuButton">
         <button class="formExit" onclick="showMenu()">
           <img src="menu.svg" />
           </button>
         </div>
       </div>
+    <!-- This is the root of the svg image, the svg image is made         -->
+    <!-- fullscreen using css.                                            -->
     <svg id="svgpict" class="svgpict" xmlns="http://www.w3.org/2000/svg" style="background: white"></svg>
   </body>
 </html>
