@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Author: Jan van der Meiden                                           -->
+<!-- jvdmeiden@gmail.com                                                  -->
+<!-- Version: 20240930.00                                                 -->
+<!-- Copyright (c) 2024 Jan van der Meiden.                               -->
+<!-- Copying and distribution of this file, with or without modification, -->
+<!-- are permitted in any medium without royalty provided the copyright   -->
+<!-- notice and this notice are preserved.                                -->
+<!--                                                                      -->
+<!-- Start of generic webpage for svg                                     -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Generic page with svg</title>
+    <link href="dots.css" rel="stylesheet" type="text/css">
+    <script src="https://jvdm.info/scripts/jmid.js" defer=""></script>
+    <script src="dots.js"></script>
+  </head>
+  <body onLoad="init()">
+      <div id="menu">
+        <form name="choice" class="menuForm" onsubmit="return noAction();">
+          <div><h4>Graph Data</h4></div><div>
+            <input type="image" class="formExit" onclick="hideMenu()" src="exit.svg" >
+          </div>
+          <label for="distance">Distance:</label>
+          <input value="70" type="number" name="distance" step="1" min="1" max="1000">
+          <label for="diameter">Diameter:</label>
+          <input value="7" type="number" name="diameter" step="1" min="1" max="1000">
+          <label for="color">Color:</label>
+            <select name="color">
+              <option value="black">Black</option> 
+              <option value="grey">Grey</option> 
+              <option value="red">Red</option> 
+              <option value="orange">Orange</option> 
+              <option value="yellow">Yellow</option> 
+              <option value="green">Green</option> 
+              <option value="blue">Blue</option> 
+              <option value="violet">Violet</option> 
+            </select>
+          <label for="opacity">Opacity:</label>
+            <select name="opacity">
+              <option value="100%">100%</option> 
+              <option value="80%">80%</option> 
+              <option value="60%">60%</option> 
+              <option value="40%">40%</option> 
+              <option value="20%">20%</option> 
+            </select>
+          <div></div><div class="input"><button onclick="submitChoice()" >Submit</button></div>
+        </form>
+      </div>
+      <div id="button" class="menuButton">
+        <button class="formExit" onclick="showMenu()">
+          <img src="menu.svg" />
+          </button>
+        </div>
+      </div>
+    <svg id="svgpict" class="svgpict" xmlns="http://www.w3.org/2000/svg" style="background: white"></svg>
+  </body>
+</html>
+
