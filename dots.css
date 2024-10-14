@@ -6,6 +6,10 @@
  visibility: collapse;
 }
 
+.formButton{
+  width: 100px;
+}
+
 .menuForm {
  position: absolute;
  top: 10px;
