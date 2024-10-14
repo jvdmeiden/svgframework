@@ -1,3 +1,7 @@
+// Counter for 'layers'
+let count = 0;
+let mouseUp = new Boolean(true);
+
 // Set a stile attribute to vissible
 function show(id) {
   document.getElementById(id).style.visibility = "visible";
@@ -8,7 +12,7 @@ function hide(id) {
   document.getElementById(id).style.visibility = "collapse";
 }
 
-// Read command line parameters
+// Initialize, read command line parameters
 function init(){
   if (getQueryVariable("distance")){
     document.forms["choice"]["distance"].value = getQueryVariable("distance");
@@ -21,12 +25,32 @@ function init(){
   } 
   if (getQueryVariable("color")){
     document.forms["choice"]["color"].value = getQueryVariable("color");
-  } 
+  }
+  var svgObject=document.getElementById("svgpict");
+  window.addEventListener("mouseup", (e) => {
+    mouseUp = true;
+  }) 
+  window.addEventListener("mousedown", (e) => {
+    mouseUp = false;
+  }) 
+  window.addEventListener("mousemove", (e) => {
+    console.log(e.offsetX);
+    console.log(e.offsetY);
+  }) 
 }
 
-// Drap a circle in SVG
+// Reset image
+function resetImage(){
+  var svgObject=document.getElementById("svgpict");
+  while (svgObject.firstChild) {
+    svgObject.removeChild(svgObject.firstChild);
+  }
+}
+
+// Draw a circle in SVG
 function drawDot(object,x,y,r,fill,opacity){
   newDot = document.createElementNS("http://www.w3.org/2000/svg", 'circle'); 
+  newDot.setAttribute("layer","l" + count); 
   newDot.setAttribute("cx",x); 
   newDot.setAttribute("cy",y); 
   newDot.setAttribute("r",r); 
@@ -56,6 +80,7 @@ function submitChoice(inp){
     }
       x += d;
   }
+  count = count + 1;
   return false;
 }
 

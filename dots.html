@@ -54,7 +54,11 @@
               <option value="40%">40%</option> 
               <option value="20%">20%</option> 
             </select>
-          <div></div><div class="input"><button onclick="submitChoice()" >Submit</button></div>
+          <div></div>
+          <div class="input">
+            <button class="formButton" onclick="submitChoice()" >Submit</button><br>
+            <button class="formButton" onclick="resetImage()" >Clear image</button>
+          </div>
         </form>
       </div>
       <!-- The button that will replace the form, set to ' collapsed'     -->
@@ -67,7 +71,7 @@
       </div>
     <!-- This is the root of the svg image, the svg image is made         -->
     <!-- fullscreen using css.                                            -->
-    <svg id="svgpict" class="svgpict" xmlns="http://www.w3.org/2000/svg" style="background: white"></svg>
+    <svg id="svgpict" xmlns="http://www.w3.org/2000/svg" style="background: white"> </svg>    
   </body>
 </html>
 
