@@ -17,6 +17,7 @@ function hide(id) {
 
 // Initialize, read command line parameters
 function init(){
+  var svgObject=document.getElementById("svgpict");
   if (getQueryVariable("distance")){
     document.forms["choice"]["distance"].value = getQueryVariable("distance");
   }
@@ -33,15 +34,15 @@ function init(){
     touch = 1;
   }
   if ( touch == 0 ){
-    window.addEventListener("mouseup", (e) => {
+    svgObject.addEventListener("mouseup", (e) => {
       mouseDown = 0;
     }) 
-    window.addEventListener("mousedown", (e) => {
+    svgObject.addEventListener("mousedown", (e) => {
       mouseDown = 1;
       lastX = e.offsetX;
       lastY = e.offsetY;
     }) 
-    window.addEventListener("mousemove", (e) => {
+    svgObject.addEventListener("mousemove", (e) => {
       if (mouseDown == 1){
         moveDots(count,e.offsetX-lastX,e.offsetY-lastY);  
         lastX = e.offsetX;
@@ -50,14 +51,14 @@ function init(){
     }) 
   } else {
 
-   window.addEventListener("touchstart", (e) => {
+   svgObject.addEventListener("touchstart", (e) => {
      e.preventDefault();
      const touch = e.changedTouches;
      lastX = touch[0].pageX;
      lastY = touch[0].pageY;
    })
 
-   window.addEventListener("touchmove", (e) => {
+   svgObject.addEventListener("touchmove", (e) => {
      e.preventDefault();
      touch = e.changedTouches;
      moveDots(count,touch[0].pageX-lastX,touch[0].pageY-lastY);  
@@ -111,11 +112,6 @@ function drawDot(object,x,y,r,fill,opacity){
   newDot.setAttribute("fill",fill); 
   newDot.setAttribute("fill-opacity",opacity); 
   object.appendChild(newDot);
-}
-
-// Dummy function for the form submit
-function noAction(inp){
-  return false;
 }
 
 // Move dots

@@ -27,7 +27,7 @@
       <!-- The menu will be set to 'collapsed' or ' visible' using css    -->
       <!-- and/or javascript.                                             -->
       <div id="menu">
-        <form name="choice" class="menuForm" onsubmit="return noAction();">
+        <form name="choice" class="menuForm" onsubmit="return false;">
           <div><h4>Graph Data</h4></div><div>
             <input type="image" class="formExit" onclick="hideMenu()" src="exit.svg" >
           </div>
@@ -56,7 +56,7 @@
             </select>
           <div></div>
           <div class="input">
-            <button class="formButton" onclick="submitChoice()" >Submit</button><br>
+            <button class="formButton" onclick="submitChoice()" ><h3>Submit</h3></button><br>
             <button class="formButton" onclick="resetImage()" >Clear image</button>
           </div>
         </form>
