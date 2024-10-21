@@ -89,7 +89,9 @@ body {
 @media (orientation: portrait) {
   @media (pointer: coarse)  {
    .menuForm {
-      font-size: 48px;
+      @media (max-aspect-ratio: 0.6)  {
+         font-size: 48px;
+      }
       bottom: 10px;
       width: 90%;
    }
