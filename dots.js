@@ -108,8 +108,8 @@ function drawDots(xOffset,yOffset){
   var opacity=document.forms["choice"]["opacity"].value;
   var maxX=window.screen.width*Math.max(1,window.devicePixelRatio);
   var maxY=window.screen.height*Math.max(1,window.devicePixelRatio);
-  for (let x = xOffset%d; x < maxX; x += d){
-    for (let y = yOffset%d; y < maxY; y += d){
+  for (let x = xOffset%d-d; x < maxX; x += d){
+    for (let y = yOffset%d-d; y < maxY; y += d){
       drawDot(svgObject,x,y,r,fill,opacity);
     }
   }
