@@ -44,52 +44,25 @@ function init(){
     }) 
     svgObject.addEventListener("mousemove", (e) => {
       if (mouseDown == 1){
-        moveDots(count,e.offsetX-lastX,e.offsetY-lastY);  
         lastX = e.offsetX;
         lastY = e.offsetY;
+        moveDots(count);  
       } 
     }) 
   } else {
-
-   svgObject.addEventListener("touchstart", (e) => {
-     e.preventDefault();
-     const touch = e.changedTouches;
-     lastX = touch[0].pageX;
-     lastY = touch[0].pageY;
-   })
-
-   svgObject.addEventListener("touchmove", (e) => {
-     e.preventDefault();
-     touch = e.changedTouches;
-     moveDots(count,touch[0].pageX-lastX,touch[0].pageY-lastY);  
-     lastX = touch[0].pageX;
-     lastY = touch[0].pageY;
-    
-//     for (let i = 0; i < touch.length; i++) {
-//       idx = ongoingTouchIndexById(touch[i].identifier);
-//       if (idx >= 0) {
-//
-//      log(`continuing touch ${idx}`);
-//      ctx.beginPath();
-//      log(
-//        `ctx.moveTo( ${ongoingTouches[idx].pageX}, ${ongoingTouches[idx].pageY} );`,
-//      );
-//      ctx.moveTo(ongoingTouches[idx].pageX, ongoingTouches[idx].pageY);
-//      log(`ctx.lineTo( ${touches[i].pageX}, ${touches[i].pageY} );`);
-//      ctx.lineTo(touches[i].pageX, touches[i].pageY);
-//      ctx.lineWidth = 4;
-//      ctx.strokeStyle = color;
-//      ctx.stroke();
-//
-//      ongoingTouches.splice(idx, 1, copyTouch(touches[i])); // swap in the new touch record
-//    } else {
-//      log("can't figure out which touch to continue");
-//    }
-//  }
-//      } 
-      })
-
-
+    svgObject.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      const touch = e.changedTouches;
+      lastX = touch[0].pageX;
+      lastY = touch[0].pageY;
+    })
+    svgObject.addEventListener("touchmove", (e) => {
+      e.preventDefault();
+      touch = e.changedTouches;
+      lastX = touch[0].pageX;
+      lastY = touch[0].pageY;
+      moveDots(count);  
+    })
   }
 }
 
@@ -115,14 +88,9 @@ function drawDot(object,x,y,r,fill,opacity){
 }
 
 // Move dots
-function moveDots(layer,cx,cy){
-  var layerDots = document.getElementsByClassName('l'+layer);
-  for (var i = 0; i < layerDots.length; ++i) {
-    x = parseInt(layerDots[i].getAttribute("cx"));
-    y = parseInt(layerDots[i].getAttribute("cy"));
-    layerDots[i].setAttribute("cx",x + cx);
-    layerDots[i].setAttribute("cy",y + cy);
-  }
+function moveDots(layer){
+  removeElementsByClass('l' + layer);
+  drawDots(lastX,lastY);
 }
 
 // Process the data entered in the form and draw the SVG image
@@ -143,9 +111,7 @@ function drawDots(xOffset,yOffset){
   for (let x = xOffset%d; x < maxX; x += d){
     for (let y = yOffset%d; y < maxY; y += d){
       drawDot(svgObject,x,y,r,fill,opacity);
-      y += d;
     }
-      x += d;
   }
 }
 
@@ -173,4 +139,12 @@ function hideMenu()
 { 
   hide("menu");
   show("button");
+}
+
+//
+function removeElementsByClass(className) {
+    let elements = document.getElementsByClassName(className);
+    while(elements.length > 0) {
+        elements[0].parentNode.removeChild(elements[0]);
+    }
 }

@@ -94,6 +94,12 @@ body {
       width: 90%;
    }
    .menuForm {
+    select {
+    font-family: inherit;
+    font-size: 50%;
+   }
+  }
+   .menuForm {
     button,
     input,
     select,
