@@ -39,8 +39,6 @@ function init(){
     }) 
     svgObject.addEventListener("mousedown", (e) => {
       mouseDown = 1;
-      lastX = e.offsetX;
-      lastY = e.offsetY;
     }) 
     svgObject.addEventListener("mousemove", (e) => {
       if (mouseDown == 1){
@@ -50,12 +48,6 @@ function init(){
       } 
     }) 
   } else {
-    svgObject.addEventListener("touchstart", (e) => {
-      e.preventDefault();
-      const touch = e.changedTouches;
-      lastX = touch[0].pageX;
-      lastY = touch[0].pageY;
-    })
     svgObject.addEventListener("touchmove", (e) => {
       e.preventDefault();
       touch = e.changedTouches;
